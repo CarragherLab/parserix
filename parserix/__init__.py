@@ -1,2 +1,2 @@
 from parserix import clean
-from parserix import parse_paths
+from parserix import parse
