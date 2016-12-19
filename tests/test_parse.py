@@ -11,35 +11,35 @@ clean_paths = clean.clean(test_paths)
 
 eg = "/mnt/ImageXpress/2015-07-31 val screen/val screen/HCC15691/2015-07-31/4014/val screen_B02_s1_w1_thumb62D4A363-7C7E-40D0-8A9E-55EC6681574D.tif"
 def test_get_img_filename():
-    filename = parse.get_img_filename(eg)
+    filename = parse.img_filename(eg)
     assert filename == "val screen_B02_s1_w1_thumb62D4A363-7C7E-40D0-8A9E-55EC6681574D.tif"
 
 
-def test_get_img_well():
-    filename = parse.get_img_filename(eg)
-    assert parse.get_img_well(filename) == "B02"
+def test_img_well():
+    filename = parse.img_filename(eg)
+    assert parse.img_well(filename) == "B02"
 
 
-def test_get_img_site():
-    filename = parse.get_img_filename(eg)
-    assert parse.get_img_site(filename) == 1
+def test_img_site():
+    filename = parse.img_filename(eg)
+    assert parse.img_site(filename) == 1
 
 
-def test_get_img_channel():
-    filename = parse.get_img_filename(eg)
-    assert parse.get_img_channel(filename) == 1
+def test_img_channel():
+    filename = parse.img_filename(eg)
+    assert parse.img_channel(filename) == 1
 
 
-def test_get_plate_name():
-    assert parse.get_plate_name(eg) == "HCC15691"
+def test_plate_name():
+    assert parse.plate_name(eg) == "HCC15691"
 
 
-def test_get_plate_date():
-    assert parse.get_plate_date(eg) == "2015-07-31"
+def test_plate_date():
+    assert parse.plate_date(eg) == "2015-07-31"
 
 
-def test_get_plate_num():
-    assert parse.get_plate_num(eg) == 4014
+def test_plate_num():
+    assert parse.plate_num(eg) == 4014
 
 
 def test_check_filepath():
