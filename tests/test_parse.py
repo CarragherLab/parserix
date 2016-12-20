@@ -44,6 +44,16 @@ def test_plate_date_datetime():
     assert isinstance(ans, datetime.datetime)
 
 
+def test_plate_date_argument1():
+    with pytest.raises(ValueError):
+        parse.plate_date(eg, as_datetime="not_boolean")
+
+
+def test_plate_date_argument2():
+    with pytest.raises(ValueError):
+        parse.plate_date(eg, as_datetime=1)
+
+
 def test_plate_num():
     assert parse.plate_num(eg) == 4014
 
