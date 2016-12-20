@@ -1,0 +1,13 @@
+language: python
+python:
+    - "2.7"
+    - "3.4"
+    - "3.5"
+    - "nightly"
+install:
+    - pip install codecov
+    - pip install pytest-cov
+script:
+    - py.test --cov=./
+after_success:
+    - codecov
