@@ -4,7 +4,6 @@
 [![Build Status](https://travis-ci.org/Swarchal/parserix.svg?branch=master)](https://travis-ci.org/Swarchal/parserix)
 [![coverage](https://img.shields.io/codecov/c/github/Swarchal/parserix/master.svg)](https://codecov.io/gh/Swarchal/parserix)
 
------------------------
 example:
 ```python
 from parserix import parse
@@ -16,6 +15,9 @@ parse.img_well(filename)
 
 parse.img_site(filename)
     >>> 1
+
+parse.img_channel(filename)
+    >>> 3
 
 parse.plate_name(filename)
     >>> "HCC15691"

@@ -9,6 +9,6 @@ install:
     - pip install codecov
     - pip install pytest-cov
 script:
-    - py.test --cov=tests
+    - py.test --cov=parserix
 after_success:
     - codecov
