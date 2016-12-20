@@ -1,5 +1,6 @@
 from parserix import clean
 from parserix import parse
+import datetime
 import pytest
 import os
 
@@ -34,8 +35,13 @@ def test_plate_name():
     assert parse.plate_name(eg) == "HCC15691"
 
 
-def test_plate_date():
-    assert parse.plate_date(eg) == "2015-07-31"
+def test_plate_date_string():
+    assert parse.plate_date(eg, as_datetime=False) == "2015-07-31"
+
+
+def test_plate_date_datetime():
+    ans = parse.plate_date(eg, as_datetime=True)
+    assert isinstance(ans, datetime.datetime)
 
 
 def test_plate_num():

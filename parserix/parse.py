@@ -2,6 +2,7 @@
 parse metadata from ImageXpress file paths
 """
 
+from datetime import datetime
 import os
 
 def img_filename(file_path):
@@ -31,9 +32,15 @@ def plate_name(file_path):
     return file_path.split(os.sep)[-4]
 
 
-def plate_date(file_path):
+def plate_date(file_path, as_datetime=False):
     """return plate date from full image URL"""
-    return file_path.split(os.sep)[-3]
+    date = file_path.split(os.sep)[-3]
+    if as_datetime is False:
+        return date
+    elif as_datetime is True:
+        return datetime.strptime(date, "%Y-%m-%d")
+    else:
+        raise ValueError("as_datetime needs to be a boolean")
 
 
 def plate_num(file_path):
