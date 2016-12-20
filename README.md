@@ -1,5 +1,10 @@
-# Parse metadata from ImageXpress paths and file names
+# parserix
+## Parse metadata from ImageXpress file paths
 
+[![Build Status](https://travis-ci.org/Swarchal/parserix.svg?branch=master)](https://travis-ci.org/Swarchal/parserix)
+[![coverage](https://img.shields.io/codecov/c/github/Swarchal/parserix/master.svg)](https://codecov.io/gh/Swarchal/parserix)
+
+-----------------------
 example:
 ```python
 from parserix import parse
@@ -17,4 +22,8 @@ parse.plate_name(filename)
 
 parse.plate_date(filename)
     >>> "2015-07-31"
+
+parse.plate_date(filename, as_datetime=True)
+    >>> datetime.datetime(2015, 7, 31, 0, 0)
+
 ```
