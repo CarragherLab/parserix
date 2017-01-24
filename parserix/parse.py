@@ -11,6 +11,12 @@ def img_filename(file_path):
     return filename.strip()
 
 
+def path(file_path):
+    """return the path up until the image URL"""
+    p, f = os.path.split(file_path)
+    return p.strip()
+
+
 def img_well(img_url, char="_"):
     """return well from final image URL"""
     return str(img_url.split(char)[1])

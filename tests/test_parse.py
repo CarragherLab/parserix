@@ -11,9 +11,14 @@ test_paths = [line.strip() for line in open(test_list_path)]
 clean_paths = clean.clean(test_paths)
 
 eg = "/mnt/ImageXpress/2015-07-31 val screen/val screen/HCC15691/2015-07-31/4014/val screen_B02_s1_w1_thumb62D4A363-7C7E-40D0-8A9E-55EC6681574D.tif"
-def test_get_img_filename():
+def test_img_filename():
     filename = parse.img_filename(eg)
     assert filename == "val screen_B02_s1_w1_thumb62D4A363-7C7E-40D0-8A9E-55EC6681574D.tif"
+
+
+def test_path():
+    path = parse.path(eg)
+    assert path == "/mnt/ImageXpress/2015-07-31 val screen/val screen/HCC15691/2015-07-31/4014"
 
 
 def test_img_well():
