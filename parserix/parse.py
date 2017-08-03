@@ -13,7 +13,7 @@ def img_filename(file_path):
 
 def path(file_path):
     """return the path up until the image URL"""
-    p, f = os.path.split(file_path)
+    p, _ = os.path.split(file_path)
     return p.strip()
 
 
@@ -44,7 +44,7 @@ def plate_date(file_path, as_datetime=False):
     if as_datetime is False:
         return date
     elif as_datetime is True:
-        return datetime.strptime(date, "%Y-%m-%d")
+        return datetime.strptime(date, "%Y-%m-%d").date()
     else:
         raise ValueError("as_datetime needs to be a boolean")
 
