@@ -46,7 +46,7 @@ def test_plate_date_string():
 
 def test_plate_date_datetime():
     ans = parse.plate_date(eg, as_datetime=True)
-    assert isinstance(ans, datetime.datetime)
+    assert isinstance(ans, datetime.date)
 
 
 def test_plate_date_argument1():
