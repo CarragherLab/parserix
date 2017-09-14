@@ -1,7 +1,7 @@
 # parserix
 ## Parse metadata from ImageXpress file paths
 
-[![Build Status](https://travis-ci.org/Swarchal/parserix.svg?branch=master)](https://travis-ci.org/Swarchal/parserix)
+[![BuildStatus](https://travis-ci.org/CarragherLab/parserix.svg?branch=master)](https://travis-ci.org/CarragherLab/parserix)
 [![coverage](https://img.shields.io/codecov/c/github/Swarchal/parserix/master.svg)](https://codecov.io/gh/Swarchal/parserix)
 
 example:
