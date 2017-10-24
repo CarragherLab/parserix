@@ -2,7 +2,7 @@
 ## Parse metadata from ImageXpress file paths
 
 [![BuildStatus](https://travis-ci.org/CarragherLab/parserix.svg?branch=master)](https://travis-ci.org/CarragherLab/parserix)
-[![coverage](https://img.shields.io/codecov/c/github/Swarchal/parserix/master.svg)](https://codecov.io/gh/Swarchal/parserix)
+[![coverage](https://img.shields.io/codecov/c/github/CarragherLab/parserix/master.svg)](https://codecov.io/gh/CarragherLab/parserix)
 
 example:
 ```python
