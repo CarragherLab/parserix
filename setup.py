@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name="parserix",
-      version="0.1",
+      version="0.2",
       url="http://github.com/swarchal/parserix",
       description="parse metadata from ImageXpress files and paths",
       author="Scott Warchal",
