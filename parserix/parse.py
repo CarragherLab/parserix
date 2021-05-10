@@ -5,6 +5,7 @@ parse metadata from ImageXpress file paths
 from datetime import datetime
 import os
 
+
 def img_filename(file_path):
     """return the final image URL from a file path"""
     filename = str(file_path.split(os.sep)[-1])
@@ -33,14 +34,22 @@ def img_channel(img_url, char="_"):
     return int(img_url.split(char)[3][1])
 
 
-def plate_name(file_path):
+def plate_name(file_path, old_path=True):
     """return plate name from full image URL"""
-    return file_path.split(os.sep)[-4]
+    if old_path:
+        index = -4
+    else:
+        index = -5
+    return file_path.split(os.sep)[index]
 
 
-def plate_date(file_path, as_datetime=False):
+def plate_date(file_path, as_datetime=False, old_path=True):
     """return plate date from full image URL"""
-    date = file_path.split(os.sep)[-3]
+    if old_path:
+        index = -3
+    else:
+        index = -4
+    date = file_path.split(os.sep)[index]
     if as_datetime is False:
         return date
     elif as_datetime is True:
@@ -49,9 +58,13 @@ def plate_date(file_path, as_datetime=False):
         raise ValueError("as_datetime needs to be a boolean")
 
 
-def plate_num(file_path):
+def plate_num(file_path, old_path=True):
     """return plate number from full image URL"""
-    return int(file_path.split(os.sep)[-2])
+    if old_path:
+        index = -2
+    else:
+        index = -3
+    return int(file_path.split(os.sep)[index])
 
 
 def check_filepath(file_path, char="_"):
