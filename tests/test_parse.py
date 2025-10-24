@@ -1,9 +1,9 @@
-from parserix import clean
-from parserix import parse
 import datetime
-import pytest
 import os
 
+import pytest
+
+from parserix import clean, parse
 
 test_list_path = os.path.join(os.path.abspath("tests"), "images.txt")
 new_test_list_path = os.path.join(os.path.abspath("tests"), "new_images.txt")
@@ -15,6 +15,7 @@ new_test_paths = [line.strip() for line in open(new_test_list_path)]
 clean_paths = clean.clean(test_paths)
 new_clean_paths = clean.clean(new_test_paths)
 
+# ruff: noqa: E501
 EXAMPLE_PATH = "/mnt/ImageXpress/2015-07-31 val screen/val screen/HCC15691/2015-07-31/4014/val screen_B02_s1_w1_thumb62D4A363-7C7E-40D0-8A9E-55EC6681574D.tif"
 NEW_EXAMPLE_PATH = "/mnt/Datastore/IGMM/ImageXpress2020/drug-discovery/GCGR-FDA/E13FDAa1/2021-04-03/490/TimePoint_1/val screen_B02_s1_w1_thumb62D4A363-7C7E-40D0-8A9E-55EC6681574D.tif"
 
@@ -26,8 +27,8 @@ def test_img_filename():
 
 
 def test_path():
-    assert parse.path(EXAMPLE_PATH) == "/mnt/ImageXpress/2015-07-31 val screen/val screen/HCC15691/2015-07-31/4014"
-    assert parse.path(NEW_EXAMPLE_PATH) == "/mnt/Datastore/IGMM/ImageXpress2020/drug-discovery/GCGR-FDA/E13FDAa1/2021-04-03/490/TimePoint_1"
+    assert parse.path(EXAMPLE_PATH) == "/mnt/ImageXpress/2015-07-31 val screen/val screen/HCC15691/2015-07-31/4014"  # noqa: E501
+    assert parse.path(NEW_EXAMPLE_PATH) == "/mnt/Datastore/IGMM/ImageXpress2020/drug-discovery/GCGR-FDA/E13FDAa1/2021-04-03/490/TimePoint_1"  # noqa: E501
 
 
 
@@ -59,7 +60,7 @@ def test_plate_name():
 
 def test_plate_date_string():
     assert parse.plate_date(EXAMPLE_PATH, as_datetime=False) == "2015-07-31"
-    assert parse.plate_date(NEW_EXAMPLE_PATH, as_datetime=False, old_path=False) == "2021-04-03"
+    assert parse.plate_date(NEW_EXAMPLE_PATH, as_datetime=False, old_path=False) == "2021-04-03"  # noqa: E501
 
 
 def test_plate_date_datetime():
@@ -97,8 +98,8 @@ def test_check_filepath_too_short():
 
 
 def test_check_filepath_missing_metadata():
-    example = "/mnt/ImageXpress/2015-07-31 val screen/val screen/HCC15691/2015-07-31/4014/val screen_B02_s1_thumb62D4A363-7C7E-40D0-8A9E-55EC6681574D.tif"
-    example_new = "/mnt/Datastore/IGMM/ImageXpress2020/drug-discovery/GCGR-FDA/E13FDAa1/2021-04-03/490/TimePoint_1/val screen_s1_w1_thumb62D4A363-7C7E-40D0-8A9E-55EC6681574D.tif"
+    example = "/mnt/ImageXpress/2015-07-31 val screen/val screen/HCC15691/2015-07-31/4014/val screen_B02_s1_thumb62D4A363-7C7E-40D0-8A9E-55EC6681574D.tif"  # noqa: E501
+    example_new = "/mnt/Datastore/IGMM/ImageXpress2020/drug-discovery/GCGR-FDA/E13FDAa1/2021-04-03/490/TimePoint_1/val screen_s1_w1_thumb62D4A363-7C7E-40D0-8A9E-55EC6681574D.tif"  # noqa: E501
     with pytest.raises(ValueError):
         parse.check_filepath(example)
         parse.check_filepath(example_new)

@@ -2,13 +2,13 @@
 parse metadata from ImageXpress file paths
 """
 
-from datetime import datetime
 import os
+from datetime import datetime
 
 
 def img_filename(file_path):
     """return the final image URL from a file path"""
-    filename = str(file_path.split(os.sep)[-1])
+    filename = os.path.basename(file_path)
     return filename.strip()
 
 
@@ -36,20 +36,22 @@ def img_channel(img_url, char="_"):
 
 def plate_name(file_path, old_path=True):
     """return plate name from full image URL"""
+    path_parts = file_path.replace(os.sep, '/').split('/')
     if old_path:
         index = -4
     else:
         index = -5
-    return file_path.split(os.sep)[index]
+    return path_parts[index]
 
 
 def plate_date(file_path, as_datetime=False, old_path=True):
     """return plate date from full image URL"""
+    path_parts = file_path.replace(os.sep, '/').split('/')
     if old_path:
         index = -3
     else:
         index = -4
-    date = file_path.split(os.sep)[index]
+    date = path_parts[index]
     if as_datetime is False:
         return date
     elif as_datetime is True:
@@ -60,18 +62,19 @@ def plate_date(file_path, as_datetime=False, old_path=True):
 
 def plate_num(file_path, old_path=True):
     """return plate number from full image URL"""
+    path_parts = file_path.replace(os.sep, '/').split('/')
     if old_path:
         index = -2
     else:
         index = -3
-    return int(file_path.split(os.sep)[index])
+    return int(path_parts[index])
 
 
 def check_filepath(file_path, char="_"):
     """sanity check of the file_path"""
     if len(file_path) < 20:
-        raise ValueError("Filename {} too short".format(file_path))
+        raise ValueError(f"Filename {file_path} too short")
     filename = img_filename(file_path)
     if len(filename.split(char)) < 5:
-        msg = "Filename {} contains too few metadata values".format(filename)
+        msg = f"Filename {filename} contains too few metadata values"
         raise ValueError(msg)

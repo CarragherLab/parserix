@@ -1,5 +1,6 @@
-from parserix import clean
 import os
+
+from parserix import clean
 
 # stupid testings paths
 test_list_path = os.path.join(os.path.abspath("tests"), "images.txt")
